@@ -13,6 +13,9 @@ You can install the released version of coronaApi from [CRAN](https://CRAN.R-pro
 
 ``` r
 install.packages("coronaApi")
+
+# development version can be accessed as
+uzairjan/lab05_1
 ```
 
 ## Example
