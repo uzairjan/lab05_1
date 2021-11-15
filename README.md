@@ -2,7 +2,7 @@
 # coronaApi
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/uzairjan/lab05_1.svg?branch=main)](https://travis-ci.com/uzairjan/lab05_1)
+[![Travis build status](https://travis-ci.com/uzairjan/lab05_1.svg?branch=main)](https://app.travis-ci.com/github/uzairjan/lab05_1)
 <!-- badges: end -->
 
 The goal of coronaApi is to ...

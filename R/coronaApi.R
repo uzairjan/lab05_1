@@ -99,5 +99,39 @@ Class = 'coronaApi',
            return(NA)
         }
       )
+    },
+
+    getContrylist= function(){
+
+      countriesList <- paste0(url,'countries')
+      contrlist <- GET(countriesList)
+      contrlist <- content(contrlist, as = "parsed", type = "application/json")
+
+      tryCatch(
+        {
+          if(!hasName(contrlist, 'error')){
+            countriesdf <- data.frame(country =c() )
+             i <- 1
+            for (data in contrlist$countries) {
+
+              newdataframe <- data.frame(country = data$name )
+              countriesdf <- rbind(newdataframe,countriesdf)
+              i <- i+1
+            }
+            return(countriesdf)
+          }else{
+            stop("please enter correct type")
+          }
+        },
+        #error
+        error = function(error_message){
+          message(error_message)
+          return(NA)
+        }
+      )
     }
 ))
+
+
+
+

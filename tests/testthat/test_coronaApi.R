@@ -1,6 +1,5 @@
 library(httr)
 obj <- coronaApi()
-obj$getDailyReportedData('daily')
 
 test_that("Type checking",{
   expect_type(obj$getSingleCountryList("sweden"), "list")
@@ -8,16 +7,19 @@ test_that("Type checking",{
   expect_type(obj$getOverAllList(), "list")
 
   expect_type(obj$getDailyReportedData('daily'), "list")
+  expect_type(obj$getContrylist(), "list")
+
 })
 
 test_that("should always return greater than zero", {
   expect_true(length(obj$getOverAllList())!=0)
   expect_true(length(obj$getDailyReportedData('daily'))!=0)
   expect_true(length(obj$getSingleCountryList("sweden"))!=0)
+  expect_true(length(obj$getContrylist()) !=0)
 
 })
 
-test_that("internal structure of getInfoStation function output is correct", {
+test_that("check keywords", {
   cols  <- obj$getOverAllList()
 
   attrib_cols<-c("confirmed" , "recovered"  ,  "deaths" )
@@ -32,6 +34,10 @@ test_that("internal structure of getInfoStation function output is correct", {
   expect_equal(attributes(cols_daily)[[1]],attrib_daily)
 
 
+  cols_countries  <- obj$getContrylist()
+  attrib_country<-c("country" )
+  expect_equal(attributes(cols_countries)[[1]],attrib_country)
+
 })
 
 test_that("expect error to be returned",{
@@ -41,6 +47,9 @@ test_that("expect error to be returned",{
   expect_error(obj$getDailyReportedData(input))
 
   expect_error(obj$getOverAllList(input))
+
+  expect_error(obj$getContrylist(input))
+
 })
 
 
